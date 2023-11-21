@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let mainMiddle = document.getElementById("four");
     let mainRight = document.getElementById("five");
     let wordEntryCard = document.createElement("div");
+    // let compareDef = document.querySelector("#five").querySelector(".card");
     let word = document.createElement("h3");
     let partSpeech = document.createElement("p");
     let definition = document.createElement("p");
@@ -74,6 +75,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderSideBarWords(wordsDb) {
         let wordList = document.getElementById("word-list");
+        let currentDef = (document.querySelector("#four").querySelector(".card"));
+        let compareDef;
         wordsDb.forEach(wordEntry=>{
             let li = document.createElement("li");
             console.log(wordEntry);
@@ -85,13 +88,32 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(wordsDb);
                 slctWordEntry = li;
                 console.log(slctWordEntry);
-                renderFullDefinition(slctWordEntry, wordsDb);
+                if (document.querySelector("#five").querySelector(".card") === null) {
+                    renderFullDefinition(slctWordEntry, wordsDb);
+                } else {
+                    compareDef = document.querySelector("#five").querySelector(".card");
+                    console.log(compareDef);
+                    renderFullDefinition(slctWordEntry, wordsDb);
+                    mainRight.append(compareDef);
+                }
+                // renderFullDefinition(slctWordEntry, wordsDb);
             })
             wordList.appendChild(li);
     })
     }
 
+    // function isMainRightPop() {
+    //     let compareDef = document.querySelector("#five").querySelector(".card");
+    //     if (document.querySelector("#five").querySelector(".card") === null) {
+    //         console.log(compareDef);
+    //     } else {
+    //         // console.log(compareDef);
+    //         return compareDef = document.querySelector("#five").querySelector(".card");
+    //     }
+    // }
+
     function renderFullDefinition(slctWordEntry, wordsDb) {
+        // isMainRightPop();
         for (let i = 0; i <= wordsDb.length-1; i++) {
             if (slctWordEntry.id == wordsDb[i].id) {
                 slctWordEntry = wordsDb[i];
@@ -109,20 +131,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 wordEntryCard.appendChild(synonym);
                 wordEntryCard.setAttribute("class", "card");
                 mainMiddle.append(wordEntryCard);
+                // console.log(compareDef);
+                // mainRight.append(compareDef);
         }    
     }
     }
 
     function renderWordDef(wordFound) {
+        mainMiddle.textContent = " ";
         word.textContent = wordFound.word;
         wordEntryCard.appendChild(word);
 
         definition.textContent = `Definition: ${wordFound.definition}`;
         wordEntryCard.appendChild(definition);
+        wordEntryCard.setAttribute("class", "card");
         mainMiddle.append(wordEntryCard);
     }
 
     function renderWordPartSpeech(wordFound) {
+        mainMiddle.textContent = " ";
         word.textContent = wordFound.word;
         wordEntryCard.appendChild(word);
         
@@ -133,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderSynonym(wordFound) {
+        mainMiddle.textContent = " ";
         word.textContent = wordFound.word;
         wordEntryCard.appendChild(word);
 
@@ -143,6 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderCompleteWordDef(wordFound) {
+        mainMiddle.textContent = " ";
         word.textContent = wordFound.word;
         wordEntryCard.appendChild(word);
         

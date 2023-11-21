@@ -22,6 +22,7 @@ body {
     color:antiquewhite;
   }
   #three {
+    
     text-align: center;
     grid-column: 1fr;
     grid-row: 3 / 5;
@@ -46,8 +47,24 @@ body {
     margin: 0;
     padding: 0;
   }
-  /* .card {
-
-  }s */
+  .card {
+    text-align: center;
+    border: grey solid 1px;
+    padding: 1rem;
+    width: 15rem;
+    height: 25rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 2px 2px 4px #e0ae4b
+  }
+  button:hover {
+    cursor:pointer;
+  }
+  select:hover {
+    cursor:pointer;
+  }
+  li:hover {
+    cursor:pointer;
+  }
 
   
